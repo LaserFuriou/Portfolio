@@ -7,132 +7,449 @@
     <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
-    <div class="mountain-bg">
-        <div class="mountains"></div>
+    <!-- Fond forêt SVG fixe -->
+    <div class="forest-bg">
+        <svg width="100%" height="100%" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="lumiere" cx="50%" cy="55%" r="40%">
+                    <stop offset="0%" stop-color="#7ab840" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#0a1a05" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="tronc1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#1a0e04"/>
+                    <stop offset="30%" stop-color="#3d2410"/>
+                    <stop offset="60%" stop-color="#2a1808"/>
+                    <stop offset="100%" stop-color="#0e0803"/>
+                </linearGradient>
+                <linearGradient id="tronc2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#120a02"/>
+                    <stop offset="35%" stop-color="#2e1c0c"/>
+                    <stop offset="65%" stop-color="#1e1206"/>
+                    <stop offset="100%" stop-color="#0a0602"/>
+                </linearGradient>
+                <linearGradient id="chemin" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#7a6030"/>
+                    <stop offset="100%" stop-color="#5a4520"/>
+                </linearGradient>
+                <linearGradient id="feuillage_bg" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#050f03"/>
+                    <stop offset="100%" stop-color="#0d2006"/>
+                </linearGradient>
+                <linearGradient id="herbe" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#2a5a10"/>
+                    <stop offset="100%" stop-color="#0d1f06"/>
+                </linearGradient>
+                <filter id="flou_leger">
+                    <feGaussianBlur stdDeviation="1.5"/>
+                </filter>
+            </defs>
+ 
+            <!-- Fond forêt sombre -->
+            <rect x="0" y="0" width="680" height="400" fill="url(#feuillage_bg)"/>
+ 
+            <!-- Feuillage arrière-plan couche 1 -->
+            <ellipse cx="340" cy="120" rx="200" ry="130" fill="#0a1f06" filter="url(#flou_leger)"/>
+            <ellipse cx="120" cy="90" rx="160" ry="110" fill="#081a04" filter="url(#flou_leger)"/>
+            <ellipse cx="560" cy="90" rx="160" ry="110" fill="#081a04" filter="url(#flou_leger)"/>
+ 
+            <!-- Trouée lumineuse -->
+            <ellipse cx="340" cy="220" rx="90" ry="50" fill="#4a7a1a" opacity="0.2"/>
+            <ellipse cx="340" cy="220" rx="50" ry="28" fill="#6a9a28" opacity="0.18"/>
+            <rect x="0" y="0" width="680" height="400" fill="url(#lumiere)"/>
+ 
+            <!-- Feuillage arrière-plan couche 2 -->
+            <ellipse cx="80" cy="70" rx="130" ry="95" fill="#0c2308"/>
+            <ellipse cx="250" cy="50" rx="150" ry="100" fill="#091d05"/>
+            <ellipse cx="430" cy="55" rx="145" ry="98" fill="#0c2308"/>
+            <ellipse cx="600" cy="65" rx="130" ry="92" fill="#091d05"/>
+            <ellipse cx="170" cy="30" rx="110" ry="75" fill="#0a2006"/>
+            <ellipse cx="510" cy="35" rx="110" ry="75" fill="#0a2006"/>
+ 
+            <!-- Feuilles éclairées au loin -->
+            <ellipse cx="340" cy="160" rx="40" ry="22" fill="#1e4a0a" opacity="0.5"/>
+            <ellipse cx="280" cy="145" rx="25" ry="15" fill="#1a4008" opacity="0.4"/>
+            <ellipse cx="400" cy="150" rx="28" ry="16" fill="#1a4008" opacity="0.4"/>
+ 
+            <!-- SOL -->
+            <rect x="0" y="230" width="680" height="170" fill="url(#herbe)"/>
+            <ellipse cx="80" cy="310" rx="100" ry="40" fill="#091505" opacity="0.7"/>
+            <ellipse cx="600" cy="310" rx="100" ry="40" fill="#091505" opacity="0.7"/>
+            <ellipse cx="200" cy="290" rx="70" ry="28" fill="#091505" opacity="0.5"/>
+            <ellipse cx="480" cy="290" rx="70" ry="28" fill="#091505" opacity="0.5"/>
+            <ellipse cx="160" cy="285" rx="45" ry="14" fill="#1a4008" opacity="0.6"/>
+            <ellipse cx="520" cy="285" rx="45" ry="14" fill="#1a4008" opacity="0.6"/>
+            <ellipse cx="340" cy="360" rx="55" ry="14" fill="#163206" opacity="0.5"/>
+ 
+            <!-- CHEMIN GAUCHE -->
+            <polygon points="175,400 305,252 285,252 100,400" fill="url(#chemin)"/>
+            <polygon points="165,400 295,256 289,256 108,400" fill="#8a7038" opacity="0.3"/>
+            <polygon points="195,400 300,258 290,258 130,400" fill="#4a3515" opacity="0.25"/>
+            <polygon points="175,400 190,400 298,256 285,256" fill="#2a1a06" opacity="0.4"/>
+            <polygon points="115,400 140,400 290,258 282,258" fill="#2a1a06" opacity="0.3"/>
+ 
+            <!-- CHEMIN DROIT -->
+            <polygon points="505,400 395,252 375,252 580,400" fill="url(#chemin)"/>
+            <polygon points="515,400 405,256 391,256 572,400" fill="#8a7038" opacity="0.3"/>
+            <polygon points="485,400 400,258 390,258 550,400" fill="#4a3515" opacity="0.25"/>
+            <polygon points="505,400 490,400 382,256 395,256" fill="#2a1a06" opacity="0.4"/>
+            <polygon points="565,400 540,400 390,258 398,258" fill="#2a1a06" opacity="0.3"/>
+ 
+            <!-- Cailloux -->
+            <ellipse cx="155" cy="372" rx="9" ry="4" fill="#3a2c0e" opacity="0.8"/>
+            <ellipse cx="200" cy="340" rx="6" ry="2.5" fill="#3a2c0e" opacity="0.7"/>
+            <ellipse cx="240" cy="310" rx="5" ry="2" fill="#3a2c0e" opacity="0.6"/>
+            <ellipse cx="265" cy="286" rx="4" ry="1.5" fill="#3a2c0e" opacity="0.5"/>
+            <ellipse cx="520" cy="370" rx="9" ry="4" fill="#3a2c0e" opacity="0.8"/>
+            <ellipse cx="475" cy="338" rx="6" ry="2.5" fill="#3a2c0e" opacity="0.7"/>
+            <ellipse cx="440" cy="308" rx="5" ry="2" fill="#3a2c0e" opacity="0.6"/>
+            <ellipse cx="415" cy="284" rx="4" ry="1.5" fill="#3a2c0e" opacity="0.5"/>
+ 
+            <!-- Herbe bords chemins -->
+            <polygon points="285,252 305,252 200,400 185,400" fill="#1e4a0a" opacity="0.6"/>
+            <polygon points="375,252 395,252 495,400 480,400" fill="#1e4a0a" opacity="0.6"/>
+ 
+            <!-- Herbe centre -->
+            <polygon points="305,252 375,252 505,400 175,400" fill="#1e4208"/>
+            <ellipse cx="340" cy="310" rx="30" ry="10" fill="#163206" opacity="0.7"/>
+            <ellipse cx="340" cy="350" rx="40" ry="11" fill="#122a05" opacity="0.6"/>
+ 
+            <!-- ARBRES ARRIÈRE GAUCHE -->
+            <rect x="195" y="160" width="18" height="170" fill="url(#tronc2)" opacity="0.8"/>
+            <ellipse cx="204" cy="155" rx="45" ry="55" fill="#0c2207" opacity="0.9"/>
+            <ellipse cx="190" cy="130" rx="38" ry="48" fill="#0f2a09" opacity="0.8"/>
+            <ellipse cx="218" cy="140" rx="35" ry="45" fill="#122e0a" opacity="0.7"/>
+ 
+            <rect x="435" y="160" width="18" height="170" fill="url(#tronc2)" opacity="0.8"/>
+            <ellipse cx="444" cy="155" rx="45" ry="55" fill="#0c2207" opacity="0.9"/>
+            <ellipse cx="430" cy="130" rx="38" ry="48" fill="#0f2a09" opacity="0.8"/>
+            <ellipse cx="458" cy="140" rx="35" ry="45" fill="#122e0a" opacity="0.7"/>
+ 
+            <!-- GRANDS ARBRES MILIEU GAUCHE -->
+            <rect x="72" y="100" width="28" height="300" fill="url(#tronc1)"/>
+            <rect x="78" y="120" width="3" height="80" fill="#1a0a03" opacity="0.5"/>
+            <rect x="90" y="150" width="2" height="60" fill="#1a0a03" opacity="0.4"/>
+            <ellipse cx="86" cy="95" rx="70" ry="80" fill="#0c2508"/>
+            <ellipse cx="65" cy="70" rx="58" ry="68" fill="#0f2d0a"/>
+            <ellipse cx="108" cy="78" rx="52" ry="62" fill="#122e0b"/>
+            <ellipse cx="86" cy="55" rx="48" ry="58" fill="#142f0c"/>
+ 
+            <rect x="155" y="120" width="24" height="280" fill="url(#tronc1)"/>
+            <rect x="161" y="140" width="3" height="70" fill="#1a0a03" opacity="0.5"/>
+            <ellipse cx="167" cy="112" rx="62" ry="72" fill="#0c2508"/>
+            <ellipse cx="148" cy="88" rx="52" ry="62" fill="#0f2d0a"/>
+            <ellipse cx="186" cy="96" rx="48" ry="58" fill="#122e0b"/>
+            <ellipse cx="167" cy="72" rx="44" ry="54" fill="#142f0c"/>
+ 
+            <!-- GRANDS ARBRES MILIEU DROIT -->
+            <rect x="580" y="100" width="28" height="300" fill="url(#tronc1)"/>
+            <rect x="586" y="120" width="3" height="80" fill="#1a0a03" opacity="0.5"/>
+            <rect x="598" y="150" width="2" height="60" fill="#1a0a03" opacity="0.4"/>
+            <ellipse cx="594" cy="95" rx="70" ry="80" fill="#0c2508"/>
+            <ellipse cx="573" cy="70" rx="58" ry="68" fill="#0f2d0a"/>
+            <ellipse cx="616" cy="78" rx="52" ry="62" fill="#122e0b"/>
+            <ellipse cx="594" cy="55" rx="48" ry="58" fill="#142f0c"/>
+ 
+            <rect x="501" y="120" width="24" height="280" fill="url(#tronc1)"/>
+            <rect x="507" y="140" width="3" height="70" fill="#1a0a03" opacity="0.5"/>
+            <ellipse cx="513" cy="112" rx="62" ry="72" fill="#0c2508"/>
+            <ellipse cx="494" cy="88" rx="52" ry="62" fill="#0f2d0a"/>
+            <ellipse cx="532" cy="96" rx="48" ry="58" fill="#122e0b"/>
+            <ellipse cx="513" cy="72" rx="44" ry="54" fill="#142f0c"/>
+ 
+            <!-- ARBRES PREMIER PLAN GAUCHE -->
+            <rect x="-25" y="0" width="65" height="400" fill="url(#tronc1)"/>
+            <rect x="-15" y="30" width="6" height="120" fill="#1a0a03" opacity="0.4"/>
+            <rect x="20" y="50" width="4" height="100" fill="#1a0a03" opacity="0.3"/>
+            <ellipse cx="8" cy="30" rx="105" ry="95" fill="#081805"/>
+            <ellipse cx="-10" cy="10" rx="90" ry="80" fill="#0a1e06"/>
+            <ellipse cx="25" cy="15" rx="88" ry="82" fill="#0c2208"/>
+            <ellipse cx="8" cy="-10" rx="80" ry="72" fill="#0e2609"/>
+ 
+            <rect x="90" y="20" width="52" height="380" fill="url(#tronc2)"/>
+            <rect x="100" y="40" width="5" height="100" fill="#1a0a03" opacity="0.4"/>
+            <rect x="128" y="60" width="4" height="80" fill="#1a0a03" opacity="0.3"/>
+            <ellipse cx="116" cy="15" rx="95" ry="88" fill="#081805"/>
+            <ellipse cx="96" cy="-5" rx="82" ry="75" fill="#0a1e06"/>
+            <ellipse cx="136" cy="5" rx="78" ry="72" fill="#0c2208"/>
+            <ellipse cx="116" cy="-15" rx="72" ry="66" fill="#0e2609"/>
+ 
+            <!-- ARBRES PREMIER PLAN DROIT -->
+            <rect x="640" y="0" width="65" height="400" fill="url(#tronc1)"/>
+            <rect x="650" y="30" width="6" height="120" fill="#1a0a03" opacity="0.4"/>
+            <rect x="660" y="50" width="4" height="100" fill="#1a0a03" opacity="0.3"/>
+            <ellipse cx="672" cy="30" rx="105" ry="95" fill="#081805"/>
+            <ellipse cx="690" cy="10" rx="90" ry="80" fill="#0a1e06"/>
+            <ellipse cx="655" cy="15" rx="88" ry="82" fill="#0c2208"/>
+            <ellipse cx="672" cy="-10" rx="80" ry="72" fill="#0e2609"/>
+ 
+            <rect x="538" y="20" width="52" height="380" fill="url(#tronc2)"/>
+            <rect x="548" y="40" width="5" height="100" fill="#1a0a03" opacity="0.4"/>
+            <rect x="520" y="60" width="4" height="80" fill="#1a0a03" opacity="0.3"/>
+            <ellipse cx="564" cy="15" rx="95" ry="88" fill="#081805"/>
+            <ellipse cx="584" cy="-5" rx="82" ry="75" fill="#0a1e06"/>
+            <ellipse cx="544" cy="5" rx="78" ry="72" fill="#0c2208"/>
+            <ellipse cx="564" cy="-15" rx="72" ry="66" fill="#0e2609"/>
+ 
+            <!-- Racines -->
+            <path d="M 10 380 Q 60 355 100 375" stroke="#1a0c04" stroke-width="7" fill="none" opacity="0.6"/>
+            <path d="M 0 400 Q 55 368 95 390" stroke="#1a0c04" stroke-width="5" fill="none" opacity="0.5"/>
+            <path d="M 110 390 Q 155 362 185 382" stroke="#1a0c04" stroke-width="6" fill="none" opacity="0.5"/>
+            <path d="M 670 380 Q 620 355 580 375" stroke="#1a0c04" stroke-width="7" fill="none" opacity="0.6"/>
+            <path d="M 680 400 Q 625 368 585 390" stroke="#1a0c04" stroke-width="5" fill="none" opacity="0.5"/>
+            <path d="M 570 390 Q 525 362 495 382" stroke="#1a0c04" stroke-width="6" fill="none" opacity="0.5"/>
+ 
+            <!-- Feuillage premier plan -->
+            <ellipse cx="30" cy="-20" rx="140" ry="90" fill="#050e03" opacity="0.95"/>
+            <ellipse cx="160" cy="-30" rx="120" ry="80" fill="#060f04" opacity="0.9"/>
+            <ellipse cx="520" cy="-30" rx="120" ry="80" fill="#060f04" opacity="0.9"/>
+            <ellipse cx="650" cy="-20" rx="140" ry="90" fill="#050e03" opacity="0.95"/>
+        </svg>
     </div>
+
     <header class="header">
-        <h1>Portfolio</h1>
-        <p>Étudiant en BUT Informatique</p>
-        <p>Nolhan Gardais</p>
+        <h1>Portfolio : Nolhan Gardais</h1>
+        <p>Étudiant de 2ème année en BUT Informatique à l'UGA</p>
     </header>
     <div class="container">
-
-        <!-- Section À Propos -->
-        <section id="a_propos">
-            <div class="post"></div>
-            <div class="direction-panel" >
-                <button id="a_propos_panel">
-                    <div class="main-panel left">
-                        <h2>🎯 À Propos de moi</h2>
-                        <p>Découvrez mon parcours et mes passions</p>
-                    </div>
-                </button>
+        <div class="post"></div>
+        <div class="content">
+            <!-- Section À Propos -->
+            <section id="a_propos">
                 
-            </div>
-            <div class="sub-panels sub_a_propos" id="sub_a_propos">
-                <div class="sub-panel">
-                    <h3>🎓 Formation</h3>
-                    <p>Étudiant en 2ème année de BUT Informatique à Grenoble.</p>
+                <div class="direction-panel" >
+                    <button id="a_propos_panel">
+                        <div class="main-panel left clickable">
+                            <h2>À Propos de moi</h2>
+                            <p>Découvrez mon parcours et mes passions</p>
+                        </div>
+                    </button>
+                    
                 </div>
-                <div class="sub-panel">
-                    <h3>🎯 Objectifs</h3>
-                    <p>Devenir développeur dans la gestion de réseau pour créer des liens rapides et fiables entre les utilisateurs d'un système.</p>
-                </div>
-                <div class="sub-panel">
-                    <h3>📜 Diplômes</h3>
-                    <p>Bac STI2D au lycée Pierre Termier à Grenoble.
-                        <br> BAFA avec qualification Surveillant de Baignade.
-                        <br> Diplôme d'arbitrage de hockey sur glace, niveau Régional.
-                    </p>
-                </div>
-                <div class="sub-panel">
-                    <h3>🔥 Passions</h3>
-                    <p>J'aime et je pratique le Baseball au club des Grizzlys de Grenoble.
-                        <br> Je suis un ancien joueur de Hockey sur glace et un actuel arbitre de ce sport.
-                        <br> Jeux vidéos de tout types.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Projets -->
-        <section id="projets">
-            <div class="direction-panel" >
-                <button id="projets_panel">
-                    <div class="main-panel right">
-                        <h2>🚀 Projets</h2>
-                        <p>Mes réalisations et créations techniques</p>
+                <div class="sub-panels sub_a_propos" id="sub_a_propos">
+                    <div class="panel-wrapper">
+                        <div class="sub-panel left">
+                            <h3>Formation</h3>
+                            <p>Étudiant en 2ème année de BUT Informatique à Grenoble.</p>
+                        </div>
                     </div>
-                </button>
-            </div>
-            <div class="sub-panels sub_projets">
-                <div class="sub-panel">
-                    <h3>🌐 Site d'explications de Cap Gemini</h3>
-                    <p>Développement d'un site qui explique l'activité de Cap Gemini. Permet aux élèves de 3ème de comprendre l'activité de l'entreprise, afin de postuler pour un stage d'observation.</p>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel left">
+                            <h3>Objectifs</h3>
+                            <p>Devenir un administrateur réseau ou système pour créer des infrastructures stables et résistante.</p>
+                        </div>
+                    </div>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel left">
+                            <h3>Diplômes</h3>
+                            <p>Bac STI2D au lycée Pierre Termier à Grenoble.
+                                <br> BAFA avec qualification Surveillant de Baignade.
+                                <br> Diplôme d'arbitrage de hockey sur glace, niveau Régional.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel left">
+                            <h3>Passions</h3>
+                            <p>J'aime et je pratique le Baseball au club des Grizzlys de Grenoble.
+                                <br> Je suis un ancien joueur de Hockey sur glace et un actuel arbitre de ce sport.
+                                <br> Jeux vidéos de tout types.
+                                <br> J'explore de nouveaux lieux à travers la randonnée en montagne.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="sub-panel">
-                    <h3>🖥️ Application lourde sur Ordinateur</h3>
-                    <p>Développement d'une application à destination d'une association de village. Cette application aide l'association à l'organisation de futurs évènements, à la gestion de ses membres.</p>
+            </section>
+
+            <!-- Section Expérience -->
+            <section id="experience">
+                
+                <div class="direction-panel" >
+                    <button id="experience_panel">
+                        <div class="main-panel right clickable">
+                            <h2>Expériences <br> professionnelles</h2>
+                        </div>
+                    </button>
+                    
                 </div>
-            </div>
+                <div class="sub-panels sub_experience" id="sub_experience">
+                    <div class="panel-wrapper">
+                        <a href="https://www.capgemini.com" target="_blank">
+                            <div class="sub-panel sub-right">
+                                <h3>Stage de fin de 2ème Année</h3>
+                                <p>Développement de 4 agents GenAI chez Capgemini du 27 avril au 26 juin 2026 :</p>
+                                <p>Technologies utilisées : Agent Builder, Copilot Studio, PowerAutomate, Python</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel sub-right">
+                            <p>Agent 1 : Recherche et renvoie une liste scorée de propositions commerciales et retours d'expérience en fonction du client et du sujet demandés par l'utilisateur.</p>
+                        </div>
+                    </div>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel sub-right">
+                            <p>Agent 2 : Vérifie la présence des propositions commerciales dans la base de connaissances et envoie automatiquement des mails de relance aux collaborateurs qui n'ont pas mis à jour leurs documents.</p>
+                        </div>
+                    </div>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel sub-right">
+                            <p>Agent 3 : Alimente automatiquement le chatbot interne en ajoutant les nouvelles propositions commerciales validées après les avoir anonymisées via un script Python.</p>
+                        </div>
+                    </div>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel sub-right">
+                            <p>Agent 4 : Suit mensuellement l'intégration des contenus réutilisables et accélérateurs dans les propositions commerciales afin de réduire les tâches manuelles des équipes.</p>
+                        </div>
+                    </div>
+                    <div class="panel-wrapper">
+                        <a href="https://www.ucpa.com" target="_blank">
+                            <div class="sub-panel left">
+                                <h3>Animateur en colonie de vacances</h3>
+                                <p>Travail d'été dans l'asssociation UCPA :</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="panel-wrapper">
+                        <a href="https://maps.app.goo.gl/hZj4C2KDHdKaoho96" target="_blank">
+                            <div class="sub-panel left">
+                                <h4>Centre de Guchen :</h4>
+                                <p>2026 : 3 semaines de travail avec des enfants de 6 à 11 ans</p>
+                                <p>2025 : 4 semaines de travail avec des enfants de 6 à 11 ans</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="panel-wrapper">
+                        <a href="https://maps.app.goo.gl/5EZGpAEreQCLNmjA9" target="_blank">
+                            <div class="sub-panel left">
+                                <h4>Centre de Saint-Cyprien : </h4>
+                                <p>2026 : 3 semaines de travail avec des enfants de 13 à 15 ans</p>
+                            </div>
+                        </a>
+                    </div>
+                     <div class="panel-wrapper">
+                        <a href="https://maisonenfancebachelard.fr" target="_blank">
+                            <div class="sub-panel sub-right">
+                                <h3>Animateur en périscolaire</h3>
+                                <p>Travail d'été dans la maison de l'enfance de Bachelard :</p>
+                                <p>2024 : 3 semaines de travail avec des enfants de 6 à 9 ans</p>
+                                <p>2023 : 4 semaines de travail avec des enfants de 3 à 5 ans</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Projets -->
+            <section id="projets">
+                <div class="direction-panel" >
+                    <button id="projets_panel">
+                        <div class="main-panel left clickable">
+                            <h2>Projets</h2>
+                            <p>Mes réalisations et créations techniques</p>
+                        </div>
+                    </button>
+                </div>
+                <div class="sub-panels sub_projets" id="sub_projets">
+                    <div class="panel-wrapper">
+                        <div class="sub-panel left">
+                            <h3>Architecture réseau</h3>
+                            <p>Projet visant à simuler la création, le déploiement et la maintenance d'une infrastructure réseau pour une TPE/PME.</p>
+                            <a href="https://github.com/LaserFuriou/simulation-infrastructure-reseau " target="_blank">dépôt github du projet<img class="img-small" src="image/clic.png" alt="Icon de clic"></a>
+                        </div>
+                    </div>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel left">
+                            <h3>Aide&Vous</h3>
+                            <p>Application WEB destinée à apporter un soutien aux aidants à travers un outil de gestion, centralisation de documents et communication</p>
+                            <p>Technologies utilisées : HTML, CSS, JS, PHP, Python et SQL</p>
+                            <a href="https://aidevous.alwaysdata.net " target="_blank">Lien vers le site WEB<img class="img-small" src="image/clic.png" alt="Icon de clic"></a>
+                        </div>
+                    </div>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel left">
+                            <h3>RuraLink</h3>
+                            <p>Développement d'une application à destination d'une association de village. Cette application aide l'association à l'organisation de futurs évènements, à la gestion de ses membres.</p>
+                            <p>Technologies utilisées : Java et JavaFX</p>
+                            <a href="https://github.com/LaserFuriou/application-gestion-d-evenement" target="_blank">dépôt github du projet<img class="img-small" src="image/clic.png" alt="Icon de clic"></a>
+                        </div>
+                    </div>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel left">
+                            <h3>Site d'explications de Cap Gemini</h3>
+                            <p>Développement d'un site qui explique l'activité de Cap Gemini. Permet aux élèves de 3ème de comprendre l'activité de l'entreprise, afin de postuler pour un stage d'observation.</p>
+                            <p>Technologies utilisées : HTML, CSS et JS</p>
+                            <a href="https://github.com/LaserFuriou/Site-Explication-Capgemini" target="_blank">dépôt github du projet<img class="img-small" src="image/clic.png" alt="Icon de clic"></a>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+
+            <!-- Section Compétences -->
+            <section id="competences">
+                <div class="direction-panel" >
+                    <button id="competences_panel">
+                        <div class="main-panel right clickable">
+                            <h2>Compétences</h2>
+                            <p>Technologies et outils maîtrisés</p>
+                        </div>
+                    </button>    
+                </div>
+                <div class="sub-panels sub_competences" id="sub_competences">
+                    <div class="panel-wrapper">
+                        <div class="sub-panel sub-right">
+                            <h3>Langages</h3>
+                            <p>
+                                Java, C++, Python. Maîtrise des concepts de programmation orientée objet et fonctionnelle.
+                                <br>Shell. Maîtrise des bases de l'administration système et réseau linux.
+                                <br>HTML, CSS, JS et PHP. Maîtrise de la programmation WEB.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="panel-wrapper">
+                        <div class="sub-panel sub-right">
+                            <h3>Bases de Données</h3>
+                            <p>PostgreSQL. Conception de schémas optimisés et requêtes performantes.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
             
-        </section>
-
-        <!-- Section Compétences -->
-        <section id="competences">
-            <div class="direction-panel" >
-                <button id="competences_panel">
-                    <div class="main-panel left">
-                        <h2>⚡ Compétences</h2>
-                        <p>Technologies et outils maîtrisés</p>
+            <!-- Section Contact -->
+            <section id="contact">
+                <div class="direction-panel" >
+                    <button id="contact_panel">
+                        <div class="main-panel left clickable">
+                            <h2>Contact</h2>
+                            <p>Restons en contact pour collaborer</p>
+                        </div> 
+                    </button>
+                </div>
+                <div class="sub-panels sub_contact" id="sub_contact">
+                    <div class="panel-wrapper">
+                        <a href="mailto:nolhan.gardais@etu.univ-grenoble-alpes.fr" target="_blank">
+                            <div class="sub-panel left clickable">
+                                    <h3>📧 Email <img class="img-small" src="image/clic.png" alt="Icon de clic"></h3>
+                                    <p>nolhan.gardais@etu.univ-grenoble-alpes.fr</p>
+                            </div>
+                        </a>
                     </div>
-                </button>    
-            </div>
-            <div class="sub-panels sub_competences">
-                <div class="sub-panel">
-                    <h3>💻 Langages</h3>
-                    <p>
-                        Java, C++. Maîtrise des concepts de programmation orientée objet et fonctionnelle.
-                        <br>Shell. Maîtrise des bases de l'administration système et réseau linux.
-                        <br>HTML, CSS, JS et PHP. Maîtrise de la programmation WEB.
-                    </p>
+                    <div class="panel-wrapper">
+                        <a href="https://www.linkedin.com/in/nolhan-gardais-b77a90338" target="_blank">
+                            <div class="sub-panel left clickable">
+                                    <h3><img class="img-small" src="image/linkedin.png" alt="LinkedIn Icon"> LinkedIn <img class="img-small" src="image/clic.png" alt="Icon de clic"></h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="panel-wrapper">
+                        <a href="https://github.com/LaserFuriou" target="_blank">
+                            <div class="sub-panel left clickable">
+                                <h3><img class="img-small" src="image/github.png" alt="GitHub Icon"> GitHub <img class="img-small" src="image/clic.png" alt="Icon de clic"></h3>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="sub-panel">
-                    <h3>🗄️ Bases de Données</h3>
-                    <p>PostgreSQL. Conception de schémas optimisés et requêtes performantes.</p>
-                </div>
-            </div>
-        </section>
-         
-        <!-- Section Contact -->
-        <section id="contact">
-            <div class="direction-panel" >
-                <button id="contact_panel">
-                    <div class="main-panel right">
-                        <h2>📞 Contact</h2>
-                        <p>Restons en contact pour collaborer</p>
-                    </div> 
-                </button>
-            </div>
-            <div class="sub-panels sub_contact">
-                <div class="sub-panel">
-                    <a href="mailto:nolhan.gardais@etu.univ-grenoble-alpes.fr" target="_blank">
-                        <h3>📧 Email <img src="image/main.png" alt="Icon de clic"></h3>
-                        <p>nolhan.gardais@etu.univ-grenoble-alpes.fr</p>
-                    </a>
-                </div>
-                <div class="sub-panel">
-                    <a href="https://www.linkedin.com/in/nolhan-gardais-b77a90338" target="_blank">
-                        <h3><img src="image/linkedin.png" alt="LinkedIn Icon"> LinkedIn <img src="image/main.png" alt="Icon de clic"></h3>
-                    </a>
-                </div>
-                <div class="sub-panel">
-                    <a href="https://github.com/LaserFuriou" target="_blank">
-                        <h3><img src="image/github.png" alt="GitHub Icon"> GitHub <img src="image/main.png" alt="Icon de clic"></h3>
-                    </a>
-                </div>
-            </div>
-        </section>
+            </section>
         </div>
     </div>
 

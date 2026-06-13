@@ -10,35 +10,19 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
-/* Effet de parallaxe montagne */
-.mountain-bg {
+/* Fond forêt */
+.forest-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(to bottom, 
-        #87CEEB 0%, 
-        #98D8E8 30%, 
-        #5F9EA0 60%, 
-        #2F4F4F 80%, 
-        #1C1C1C 100%);
 }
 
-.mountains {
-    position: absolute;
-    bottom: 0;
+.forest-bg svg {
     width: 100%;
-    height: 60%;
-    background: linear-gradient(to right, 
-        transparent 0%, 
-        rgba(47, 79, 79, 0.3) 20%, 
-        rgba(47, 79, 79, 0.6) 40%, 
-        rgba(47, 79, 79, 0.8) 60%, 
-        rgba(47, 79, 79, 0.6) 80%, 
-        transparent 100%);
-    clip-path: polygon(0 100%, 15% 60%, 30% 80%, 45% 40%, 60% 70%, 75% 30%, 90% 65%, 100% 45%, 100% 100%);
+    height: 100%;
 }
 
 .container {
@@ -69,13 +53,23 @@ body {
 /* Poteau central */
 .post {
     width: 30px;
-    height: 100%;
-    background: linear-gradient(to bottom, #8B4513, #A0522D);
     position: absolute;
+    top: 0;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    background: linear-gradient(to bottom, #8B4513, #A0522D);
     border-radius: 6px;
     box-shadow: 4px 0 8px rgba(0,0,0,0.3);
+    z-index: 0;
+    bottom: -200px;
+}
+
+/* Panneaux */
+.content {
+    position: relative;
+    z-index: 1;
+    padding-top: 20px;
 }
 
 /* Panneaux directionnels */
@@ -103,11 +97,10 @@ button {
 .main-panel {
     background: linear-gradient(90deg, #2E8B57, #3CB371);
     color: white;
-    padding: 20px 40px;
+    padding: 20px 80px 20px 40px; 
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    border: 3px solid #2E8B57;
     position: relative;
-    min-width: 350px;
+    display: inline-block; 
     text-align: center;
     transform: perspective(1000px) rotateX(5deg);
     transition: all 0.3s ease;
@@ -118,30 +111,16 @@ button {
     box-shadow: 0 12px 35px rgba(0,0,0,0.4);
 }
 
-.left::before {
-    content: '';
-    position: absolute;
-    left: -58px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 56px solid transparent;
-    border-bottom: 56px solid transparent;
-    border-right: 56px solid #2E8B57;
-}
-
-.right::after {
-    content: '';
-    position: absolute;
-    right: -58px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 56px solid transparent;
-    border-bottom: 56px solid transparent;
-    border-left: 56px solid #2E8B57;
-}
-
 .right {
     background: linear-gradient(-90deg, #2E8B57, #3CB371);
+    clip-path: polygon(
+    0% 0%,
+    calc(100% - 55px) 0%,
+    100% 50%,
+    calc(100% - 55px) 100%,
+    0% 100%
+    );
+    padding: 20px 80px 20px 40px;
 }
 
 .main-panel h2 {
@@ -151,45 +130,36 @@ button {
     letter-spacing: 2px;
 }
 
-/* Sous-panneaux roses */
+/* Sous-panneaux jaunes */
 .sub-panels {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 15px;
-    margin-top: 25px;
+    margin: 25px 20% 0 20%;
+}
+
+.panel-wrapper {
+    display: flex;
+    justify-content: center;
 }
 
 .sub-panel {
-    background: linear-gradient(90deg, #FFB6C1, #FF69B4);
+    background: linear-gradient(90deg, #ffd414, #ffea8c);
     color: #2C1810;
-    padding: 15px 30px;
-    border-radius: 6px;
+    padding: 15px 40px 15px 80px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    border: 2px solid #FF1493;
+    width: max-content; 
     min-width: 280px;
     text-align: left;
     position: relative;
     transition: all 0.3s ease;
-    cursor: pointer;
+    margin-bottom: 15px;
 }
 
 .sub-panel:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-}
-
-.sub-panel::before {
-    content: '';
-    position: absolute;
-    left: -8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 8px solid #FF1493;
 }
 
 .sub-panel h3 {
@@ -203,16 +173,76 @@ button {
     line-height: 1.4;
 }
 
-.sub_a_propos, .sub_competences, .sub_contact, .sub_projets{
-    display: none;
-}
-
-img {
+.img-small {
     width: 30px;
     height: 30px;
+}
+
+.img-large {
+    width : 100px;
+    height: 100px;
+}
+
+.img-projet {
+    display: block;
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    margin: 12px 0;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.05);
 }
 
 a {
     text-decoration: none;
     color: black;
+}
+
+.left {
+    clip-path: polygon(
+        55px 0%,
+        100% 0%,
+        100% 100%,
+        55px 100%,
+        0% 50%
+    );
+    padding: 20px 40px 20px 80px;
+}
+
+.sub-right {
+    background: linear-gradient(-90deg, #ffd414, #ffea8c);
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - 55px) 0%,
+        100% 50%,
+        calc(100% - 55px) 100%,
+        0% 100%
+    );
+    padding: 15px 80px 15px 30px;
+    
+}
+
+.sub_a_propos, .sub_competences, .sub_contact, .sub_projets, .sub_experience {
+    display: none;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.35s ease;
+    opacity: 0;
+}
+
+.sub_a_propos > *, .sub_competences > *, .sub_contact > *,
+.sub_projets > *, .sub_experience > * {
+    overflow: hidden;
+}
+
+.sub_a_propos.open, .sub_competences.open, .sub_contact.open,
+.sub_projets.open, .sub_experience.open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.clickable{
+    cursor : pointer;
 }
